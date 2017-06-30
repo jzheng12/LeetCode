@@ -1,0 +1,60 @@
+public class Solution {
+    private int pt = 0;
+    public String decodeString(String s) {
+        return helper(s, 1);
+    }
+    private String helper(String s, int dup) {
+        String res = "";
+        while (pt < s.length()) {
+            if (Character.isDigit(s.charAt(pt))) {
+                int num = 0;
+                while (Character.isDigit(s.charAt(pt))) {
+                    num = num * 10 + s.charAt(pt++) - '0';
+                }
+                pt++;
+                res += helper(s, num);
+            } else if (s.charAt(pt) == ']') {
+                String temp = "";
+                for (int i = 0; i < dup; i++) {
+                   temp += res;
+                }
+                pt++;
+                return temp;
+            } else {
+                res += s.charAt(pt++);
+            }
+        }
+        return res;
+    }
+}
+
+
+ public String decodeString(String s) {
+       String res = "";
+        Stack<Integer> countStack = new Stack<>();
+        Stack<String> resStack = new Stack<>();
+        int idx = 0;
+        while (idx < s.length()) {
+            if (Character.isDigit(s.charAt(idx))) {
+                int num = 0;
+                while (Character.isDigit(s.charAt(idx))) {
+                    num = num * 10 + s.charAt(idx++) - '0';
+                }                
+                countStack.push(num);                
+            } else if (s.charAt(idx) == '[') {
+                resStack.push(res);
+                res = "";
+                idx++;
+            } else if (s.charAt(idx) == ']') {
+                StringBuilder sb  = new StringBuilder(resStack.pop());
+                int repeat = countStack.pop();
+                for (int i = 0; i < repeat; i++) {
+                    sb.append(res);
+                }
+                idx++;
+                res = sb.toString();
+            } else {
+                res += s.charAt(idx++);
+            }
+        }
+        return res;
