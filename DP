@@ -1,1 +1,76 @@
-472. Concatenated Words
+10	Regular Expression Matching	24.0%	Hard	
+32	Longest Valid Parentheses	23.0%	Hard	
+44	Wildcard Matching	19.8%	Hard	
+53	Maximum Subarray	39.4%	Easy	
+62	Unique Paths	40.7%	Medium	
+63	Unique Paths II	31.5%	Medium	
+64	Minimum Path Sum	38.2%	Medium	
+70	Climbing Stairs	39.7%	Easy	
+72	Edit Distance	31.4%	Hard	
+85	Maximal Rectangle	27.4%	Hard	
+87	Scramble String	28.9%	Hard	
+91	Decode Ways	19.4%	Medium	
+95	Unique Binary Search Trees II	31.2%	Medium	
+96	Unique Binary Search Trees	40.6%	Medium	
+97	Interleaving String	24.4%	Hard	
+115	Distinct Subsequences	31.3%	Hard	
+120	Triangle	33.5%	Medium	
+121	Best Time to Buy and Sell Stock	40.7%	Easy	
+123	Best Time to Buy and Sell Stock III	29.0%	Hard	
+132	Palindrome Partitioning II	24.0%	Hard	
+139	Word Break	29.5%	Medium	
+140	Word Break II	23.0%	Hard	
+152	Maximum Product Subarray	25.4%	Medium	
+174	Dungeon Game	23.6%	Hard	
+188	Best Time to Buy and Sell Stock IV	24.2%	Hard	
+198	House Robber	38.6%	Easy	
+213	House Robber II	33.7%	Medium	
+221	Maximal Square	28.4%	Medium	
+256	Paint House 	45.9%	Easy	
+264	Ugly Number II	32.3%	Medium	
+265	Paint House II 	37.7%	Hard	
+276	Paint Fence 	34.2%	Easy	
+279	Perfect Squares	36.4%	Medium	
+300	Longest Increasing Subsequence	38.1%	Medium	
+303	Range Sum Query - Immutable	28.9%	Easy	
+304	Range Sum Query 2D - Immutable	24.6%	Medium	
+309	Best Time to Buy and Sell Stock with Cooldown	40.5%	Medium	
+312	Burst Balloons	42.4%	Hard	
+321	Create Maximum Number	24.4%	Hard	
+322	Coin Change	26.4%	Medium	
+338	Counting Bits	60.9%	Medium	
+343	Integer Break	45.7%	Medium	
+351	Android Unlock Patterns 	43.4%	Medium	
+354	Russian Doll Envelopes	32.0%	Hard	
+357	Count Numbers with Unique Digits	45.8%	Medium	
+361	Bomb Enemy 	38.7%	Medium	
+363	Max Sum of Rectangle No Larger Than K	32.8%	Hard	
+368	Largest Divisible Subset	33.6%	Medium	
+375	Guess Number Higher or Lower II	35.6%	Medium	
+376	Wiggle Subsequence	35.4%	Medium	
+377	Combination Sum IV	41.7%	Medium	
+392	Is Subsequence	44.3%	Medium	
+403	Frog Jump	31.8%	Hard	
+410	Split Array Largest Sum	36.2%	Hard	
+413	Arithmetic Slices	54.6%	Medium	
+416	Partition Equal Subset Sum	38.8%	Medium	
+418	Sentence Screen Fitting 	27.3%	Medium	
+446	Arithmetic Slices II - Subsequence	26.0%	Hard	
+464	Can I Win	24.3%	Medium	
+466	Count The Repetitions	27.3%	Hard	
+467	Unique Substrings in Wraparound String	32.0%	Medium	
+471	Encode String with Shortest Length 	41.6%	Hard	
+472	Concatenated Words	30.0%	Hard	
+474	Ones and Zeroes	38.4%	Medium	
+486	Predict the Winner	44.7%	Medium	
+494	Target Sum	43.8%	Medium	
+514	Freedom Trail	36.9%	Hard	
+516	Longest Palindromic Subsequence	42.5%	Medium	
+517	Super Washing Machines	36.6%	Hard	
+523	Continuous Subarray Sum	22.2%	Medium	
+546	Remove Boxes	31.6%	Hard	
+552	Student Attendance Record II	29.6%	Hard	
+568	Maximum Vacation Days 	40.1%	Hard	
+576	Out of Boundary Paths	33.3%	Hard	
+600	Non-negative Integers without Consecutive Ones	27.1%	Hard	
+629	K Inverse Pairs Array	23.4%	Medium
