@@ -1,0 +1,41 @@
+// DFS
+
+public class Solution {
+    public boolean exist(char[][] board, String word) {
+        if (board == null || board.length == 0 || board[0].length == 0) return false;
+        if (word == null || word.length() == 0) return false;
+        int rows = board.length, cols = board[0].length;
+        boolean[][] visited = new boolean[rows][cols];
+        for (int i = 0; i < rows; i++) {
+                for (int j = 0; j < cols; j++) {
+                    if (dfs(board, visited, word, i, j, 0)) {
+                        return true;
+                    }
+                }
+            }
+        return false;
+        }
+        
+      private  int[][] dir = {{0, 1}, {1, 0}, {0, -1}, {-1, 0}};
+    private boolean dfs(char[][] board, boolean[][] visited, String s, int x, int y, int idx) {
+        if (idx == s.length()) return true;
+        if (!valid(board, x, y)) return false;
+        if (board[x][y] != s.charAt(idx)) return false;
+        if (visited[x][y]) return false;
+        visited[x][y] = true;
+        for (int[] d : dir) {
+            int ix = x + d[0], iy = y + d[1];
+            if (dfs(board, visited, s, ix, iy, idx + 1)) {
+                return true;
+            }
+        }
+        visited[x][y] = false;
+        return false;
+    }
+    private boolean valid(char[][] board, int x, int y) {
+        if (x < 0 || x >= board.length || y < 0 || y >= board[0].length) {
+            return false;
+        }
+        return true;
+    }
+}
