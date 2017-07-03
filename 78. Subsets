@@ -1,0 +1,82 @@
+//DFS 1
+
+public class Solution {
+    public List<List<Integer>> subsets(int[] nums) {
+        List<List<Integer>> list = new ArrayList<>();
+        List<Integer> cur = new ArrayList<>();
+        Arrays.sort(nums);
+        backTrack(nums, cur, list, 0);
+        return list;
+    }
+    private void backTrack(int[] nums, List<Integer> cur, List<List<Integer>> list, int idx) {
+        list.add(new ArrayList<>(cur));
+        for (int i = idx; i < nums.length; i++) {
+            cur.add(nums[i]);
+            backTrack(nums, cur, list, i + 1);
+            cur.remove(cur.size() - 1);
+        }
+    }
+}
+
+// DFS 2 
+public class Solution {
+    public List<List<Integer>> subsets(int[] nums) {
+        List<List<Integer>> list = new ArrayList<>();
+        List<Integer> cur = new ArrayList<>();
+        Arrays.sort(nums);
+        helper(nums, cur, list, 0);
+        return list;
+    }
+    private void helper(int[] nums, List<Integer> cur, List<List<Integer>> list, int idx) {
+        if (idx == nums.length) {
+            list.add(new ArrayList<>(cur));
+            return;
+        }
+        cur.add(nums[idx]);
+        helper(nums, cur, list, idx + 1);
+        cur.remove(cur.size() - 1);
+        helper(nums, cur, list, idx + 1);
+    }
+}
+
+// pure recursion
+public class Solution {
+    public List<List<Integer>> subsets(int[] nums) {
+        return helper(nums, nums.length - 1);
+    }
+    private List<List<Integer>> helper(int[] nums, int idx) {
+        if (idx == -1) {
+            List<Integer> cur = new ArrayList<>();
+            List<List<Integer>> res = new ArrayList<>();
+            res.add(cur);
+            return res;
+        }
+        List<List<Integer>> subSolu = helper(nums, idx - 1);
+        List<List<Integer>> res = new ArrayList<>();
+        for (List<Integer> list : subSolu) {
+            List<Integer> tmp = new ArrayList<>(list);
+            tmp.add(nums[idx]);
+            res.add(tmp);
+        }
+        res.addAll(subSolu);
+        return res;
+    }
+}
+// iterative
+public class Solution {
+    public List<List<Integer>> subsets(int[] nums) {
+        int n = nums.length - 1;
+        List<List<Integer>> res = new ArrayList<>();
+        List<Integer> subset = new ArrayList<>();
+        res.add(subset);
+        for (int i = n; i >= 0; i--) {
+            int size = res.size();
+            for (int j = 0; j < size; j++) {
+                List<Integer> tmp = new ArrayList<>(res.get(j));
+                tmp.add(nums[i]);
+                res.add(tmp);
+            }
+        }
+        return res;
+    }
+}
