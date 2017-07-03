@@ -1,0 +1,48 @@
+DFS: "add" or "not add"
+public class Solution {
+    public List<List<Integer>> subsets(int[] nums) {
+        List<List<Integer>> list = new ArrayList<>();
+        List<Integer> cur = new ArrayList<>();
+        Arrays.sort(nums);
+        helper(nums, cur, list, 0);
+        return list;
+    }
+    private void helper(int[] nums, List<Integer> cur, List<List<Integer>> list, int idx) {
+        if (idx == nums.length) {
+            list.add(new ArrayList<>(cur));
+            return;
+        }
+        cur.add(nums[idx]);
+        helper(nums, cur, list, idx + 1);
+        cur.remove(cur.size() - 1);
+        helper(nums, cur, list, idx + 1);
+    }
+}
+The same idea can be applied to other problems:
+
+473. Matchsticks to Square
+
+public class Solution {
+    public boolean makesquare(int[] nums) {
+        if (nums == null || nums.length < 4) return false;
+        int sum = 0;
+        for (int num : nums) sum += num;
+        if (sum % 4  != 0) return false;
+        return helper(nums, new int[4], 0, sum / 4);
+    }
+    private boolean helper(int[] nums, int[] sums, int idx, int target) {
+        if (idx == nums.length) {
+            if (sums[0] == target && sums[1] == target && sums[2] == target) {
+                return true;
+            }
+            return false;
+        }
+        for (int i = 0; i < 4; i++) {
+            if (sums[i] + nums[idx] > target) continue;
+            sums[i] += nums[idx];
+            if (helper(nums, sums, idx + 1, target)) return true;
+            sums[i] -= nums[idx];
+        }
+        return false;
+    }
+}
