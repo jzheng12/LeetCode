@@ -1,0 +1,27 @@
+// Remember, the given array may not be sorted and the duplicates may appear in several not continuous position.
+
+public class Solution {
+    public List<List<Integer>> findSubsequences(int[] nums) {
+        List<Integer> cur = new ArrayList<>();
+        List<List<Integer>> res  = new ArrayList<>();       
+        helper(nums, cur, res, 0);
+        return res;
+    }
+    private void helper(int[] nums, List<Integer> cur, List<List<Integer>> res, int idx) {
+           if (cur.size() > 1) res.add(new ArrayList<>(cur));
+           Set<Integer> set = new HashSet<>();
+           for (int i = idx; i < nums.length; i++) {
+               if (set.contains(nums[i])) {
+                     continue;
+               }
+               if (cur.size() == 0 || cur.get(cur.size() - 1) <= nums[i]) {
+                   cur.add(nums[i]);
+                   set.add(nums[i]);
+                   helper(nums, cur, res, i + 1);
+                   cur.remove(cur.size() - 1);
+               }
+               
+               
+           }
+    }
+}
