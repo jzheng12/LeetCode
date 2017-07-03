@@ -1,0 +1,34 @@
+public class Solution {
+    private final int MAXCOUNT = 6;
+    public int findMinStep(String board, String hand) {
+        int[] handCount = new int[26];
+        for (int i = 0; i < hand.length(); i++) handCount[hand.charAt(i) - 'A']++;
+        int res = helper(board + "#", handCount);
+        return res == MAXCOUNT ? -1 : res;
+    }
+    private int helper(String board, int[] handCount) {
+        board = removeRepeat(board);
+        if (board.equals("#")) return 0;
+        int res = MAXCOUNT, need =  0;
+        for (int i = 0, j = 0; j < board.length(); j++) {
+            if (board.charAt(i) == board.charAt(j)) continue;
+            need = 3 - (j - i);
+            int idx = board.charAt(i) - 'A';
+            if (handCount[idx] >= need) {
+                handCount[idx] -= need;
+                res = Math.min(res, need + helper(board.substring(0, i) + board.substring(j), handCount));
+                handCount[idx] += need;
+            }
+            i = j;
+        }    
+        return res;
+    }
+    private String removeRepeat(String str) {
+        for (int i = 0, j = 0; j < str.length(); j++) {
+            if (str.charAt(i) == str.charAt(j)) continue;
+            if (j - i >= 3) return removeRepeat(str.substring(0, i) + str.substring(j));
+            else i = j;
+        }
+        return str;
+    }
+}
