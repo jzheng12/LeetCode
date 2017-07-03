@@ -20,7 +20,8 @@ public class Solution {
 }
 The same idea can be applied to other problems:
 
-473. Matchsticks to Square
+473. Matchsticks to Square 
+idea here is to divide the array into 4 subsets. 
 
 public class Solution {
     public boolean makesquare(int[] nums) {
