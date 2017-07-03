@@ -1,0 +1,32 @@
+public class Solution {
+    public boolean hasPath(int[][] maze, int[] start, int[] destination) {
+          boolean[][] visited = new boolean[maze.length][maze[0].length];
+          return helper(maze, visited, start, destination);
+      }
+    private final int[] DIRS = {0, 1, 0, -1, 0};
+      private boolean helper(int[][] maze, boolean[][] visited, int[] start, int[] destination) {
+          int x = start[0];
+          int y = start[1];
+          if (visited[x][y]) return false;
+          if (Arrays.equals(start, destination)) return true;
+          visited[x][y] = true;
+          for (int i = 0; i < DIRS.length - 1; i++) {
+               int[] newStart = roll(maze, x, y, DIRS[i], DIRS[i + 1]);
+               if (helper(maze, visited, newStart, destination)) return true;
+          }
+          return false;
+      }
+      private int[] roll(int[][] maze, int x, int y, int ix, int iy) {
+          while (valid(maze, x + ix, y + iy)) {
+               x += ix;
+               y += iy;
+          }
+          return new int[]{x, y};
+      }
+      private boolean valid(int[][] maze, int x, int y) {
+          if (x <0 || x >= maze.length || y < 0 || y >= maze[0].length) {
+               return false;
+          }
+          return maze[x][y] != 1;
+      }
+}
