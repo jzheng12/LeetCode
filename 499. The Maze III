@@ -1,0 +1,50 @@
+public class Solution {
+    class Point implements Comparable<Point> {
+        int x, y, l;
+        String s;
+        public Point (int x, int y, int l, String s) {
+            this.x = x;
+            this.y = y;
+            this.l = l;
+            this.s = s;
+        }
+        public Point (int x, int y) {
+            this(x, y, Integer.MAX_VALUE, "");
+        }
+        public int compareTo(Point p) {
+            return l == p.l ? s.compareTo(p.s) : l - p.l;
+        }
+    }
+    public String findShortestWay(int[][] maze, int[] ball, int[] hole) {
+        int m = maze.length, n = maze[0].length;
+        Point[][] points = new Point[m][n];
+        for (int i = 0; i < m * n; i++) {
+            points[i/n][i%n] = new Point(i / n, i % n);
+        }
+        PriorityQueue<Point> pq = new PriorityQueue<>();
+        pq.offer(new Point(ball[0], ball[1], 0, ""));
+        int[][] dirs = {{0, 1}, {1, 0}, {0, -1}, {-1, 0}};
+        String[] ds = new String[] {"r", "d", "l", "u" };
+        while (!pq.isEmpty()) {
+            Point p = pq.poll();
+            if (points[p.x][p.y].compareTo(p) <= 0) continue;
+            points[p.x][p.y] = p;
+            for (int i = 0; i < dirs.length; i++) {
+                int x = p.x, y = p.y, l = p.l;
+                while (x < m && x >= 0 && y >= 0 && y < n && maze[x][y] == 0 && (x != hole[0] || y != hole[1])) {
+                    x += dirs[i][0];
+                    y += dirs[i][1];
+                    l++;
+                }
+                if (x != hole[0] || y != hole[1]) {
+                    x -= dirs[i][0];
+                    y -= dirs[i][1];
+                    l--;
+                }
+                pq.offer(new Point(x, y, l, p.s + ds[i]));
+            }
+        }
+        Point ans = points[hole[0]][hole[1]];
+        return ans.l == Integer.MAX_VALUE ? "impossible" : ans.s;
+    }
+}
